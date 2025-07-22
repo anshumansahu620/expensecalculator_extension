@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { AppSidebar } from "@/components/AppSidebar"; 
+
 
 import "./globals.css";
 
@@ -18,12 +18,7 @@ export const metadata: Metadata = {
   title: "Expense Tracker",
   description: "Made by Anshuman",
 
-  icons:{
-    icon:"/expense.ico",
-    shortcut:"/expense.ico",
-    apple:"/expense.ico"
-  },
-  
+
 
 };
 
