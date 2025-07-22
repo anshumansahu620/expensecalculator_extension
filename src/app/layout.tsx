@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import NavBar from "@/components/NavMain";
-
+import { AppSidebar } from "@/components/AppSidebar"; 
 
 import "./globals.css";
 
@@ -18,10 +17,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Expense Tracker",
   description: "Made by Anshuman",
-  
-  icons: {
-    icon: "/favicon.png",
+
+  icons:{
+    icon:"/expense.ico",
+    shortcut:"/expense.ico",
+    apple:"/expense.ico"
   },
+  
+
 };
 
 export default function RootLayout({
@@ -34,10 +37,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NavBar/>
+        
+         
+         {children}
          
           
-          {children}
         
       </body>
     </html>
