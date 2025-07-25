@@ -5,6 +5,7 @@ import ExpenseForm from "@/components/ExpenseForm";
 import ExpenseCard from "@/components/ExpenseCard";
 import { Expense } from "@/components/types";
 
+
 export default function MyComponent() {
   const [expenses, setExpenses] = useState<Expense[]>([]);
 
@@ -27,10 +28,13 @@ export default function MyComponent() {
   }
 
   return (
-    <div className="font-sans text-white h-screen overflow-hidden mt-[-3] sm:p-20 flex flex-row items-start justify-between gap-12">
+    <><div className="font-sans text-white h-screen overflow-hidden mt-[-3] sm:p-20 flex flex-row items-start justify-between gap-8">
   <ExpenseForm onSave={handleSave} />
   <ExpenseCard expenses={expenses} onDelete={handleDelete} />
+  
+  
 </div>
+<div></div></>
 
   );
 }

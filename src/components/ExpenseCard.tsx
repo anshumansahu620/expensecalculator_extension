@@ -1,6 +1,7 @@
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Expense } from "./types";
 import ExpenseList from "./ExpenseList";
+import { useState,useEffect } from "react";
 
 type Props = {
   expenses: Expense[];
@@ -8,15 +9,28 @@ type Props = {
 };
 
 export default function ExpenseCard({ expenses, onDelete }: Props) {
-  const total = expenses.reduce((acc, curr) => acc + curr.cost, 0);
+  const total = expenses.reduce((acc, curr) => acc + Number(curr.cost), 0);
+  const [date,setDate]=useState<string>("")
+  function getDay(){
+    const today = new Date();
+    const formattedDate =
+    today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+  return formattedDate;
+
+  }
+  useEffect(()=>{
+    setDate(getDay);
+  },[])
+
 
   return (
     <Card className="w-full max-w-md  text-white shadow-lg border border-gray-700 h-[500px] flex flex-col">
       <CardHeader className="pb-2 border-b border-gray-700">
         <CardTitle className="text-lg font-semibold text-white">Monthly Expense</CardTitle>
+        <CardTitle className="text-lg font-semibold text-[#dddddd]">Date:{date}</CardTitle>
       </CardHeader>
 
-      <CardContent className="py-4 overflow-auto flex-1">
+      <CardContent className="py-4 overflow-auto flex-1 border-white">
         {expenses.length > 0 ? (
           <ExpenseList expenses={expenses} onDelete={onDelete} />
         ) : (

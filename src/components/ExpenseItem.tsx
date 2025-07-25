@@ -15,7 +15,7 @@ export default function ExpenseItem({ expense, onDelete }: Props) {
           <span>{expense.tag}</span>
           <span>{new Date(expense.date).toLocaleDateString()}</span>
         </div>
-        <span className="text-sm font-semibold text-green-400">
+        <span className="text-sm font-semibold ">
           ₹ {expense.cost}
         </span>
       </div>
@@ -24,7 +24,8 @@ export default function ExpenseItem({ expense, onDelete }: Props) {
         variant="ghost"
         size="icon"
         onClick={onDelete}
-        className="hover:bg-red-600/20 text-red-500"
+        className="hover:bg-red-500 text-red-500"
+
       >
         <Trash className="w-4 h-4" />
       </Button>

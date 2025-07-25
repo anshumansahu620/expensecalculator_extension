@@ -1,9 +1,11 @@
 export type Expense = {
-  cost: number;
+  cost: string;
   tag: string;
-  date: string; // <-- change from Date to string
+  date: string;
 };
 
-
-
+export type Note = {
+  note: string;
+  date: string;
+};
 
