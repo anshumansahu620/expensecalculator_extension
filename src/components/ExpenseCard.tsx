@@ -27,7 +27,7 @@ export default function ExpenseCard({ expenses, onDelete }: Props) {
     <Card className="w-full max-w-md  text-white shadow-lg border border-gray-700 h-[500px] flex flex-col">
       <CardHeader className="pb-2 border-b border-gray-700">
         <CardTitle className="text-lg font-semibold text-white">Monthly Expense</CardTitle>
-        <CardTitle className="text-lg font-semibold text-[#dddddd]">Date:{date}</CardTitle>
+        <CardTitle className="text-lg font-semibold text-[#a1a1a1]">Date:{date}</CardTitle>
       </CardHeader>
 
       <CardContent className="py-4 overflow-auto flex-1 border-white">
