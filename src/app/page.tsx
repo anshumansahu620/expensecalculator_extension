@@ -11,7 +11,7 @@ export default function MyComponent() {
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("values") || "[]");
-    console.log(stored);
+    
     setExpenses(stored);
   }, []);
 

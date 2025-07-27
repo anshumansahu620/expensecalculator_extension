@@ -2,23 +2,34 @@
 
 import { useEffect, useState } from "react";
 import { Expense } from "@/components/types";
-import { ChartContainer,type ChartConfig } from "@/components/ui/chart";
-import { Bar,BarChart } from "recharts";
+import DonutChart from "@/components/PieChart";
 
 type Data = {
   total: number;
   tag: string;
 };
 
-export default function App() {
+export default function AnalyticsChart() {
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [data, setData] = useState<Data[]>([]);
 
   // Load expenses from localStorage on mount
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("values") || "[]");
+
     setExpenses(stored);
   }, []);
+  useEffect(() => {
+    const newdata = JSON.parse(localStorage.getItem("analytics-data") || "[]");
+
+    setData(newdata);
+  }, []);
+
+  function saveToStorage(updatedData: Data[]) {
+      
+      localStorage.setItem("analytics-data", JSON.stringify(updatedData));
+      setData(updatedData);
+    }
 
   // Group by tag and calculate totals
   useEffect(() => {
@@ -36,26 +47,25 @@ export default function App() {
     const result: Data[] = Object.entries(grouped).map(([tag, total]) => ({
       tag,
       total,
-    }));
+    })
+
+  
+  
+  
+  );
 
     setData(result);
+    saveToStorage(result)
   }, [expenses]);
+
+  const displayData:Data[]=data;
+    
+  
 
 
   
 
   return (
-    <div className="p-4">
-      <h1 className="text-xl font-bold mb-2">Expenses Summary</h1>
-      <ul className="mb-6">
-        {data.map((item, index) => (
-          <li key={index}>
-            <strong>{item.tag}</strong>: ₹{item.total.toFixed(2)}
-          </li>
-        ))}
-      </ul>
-
-      
-    </div>
+    <div className="max-h-64 w-100"><DonutChart data={data} /></div>
   );
 }
